@@ -1,0 +1,23 @@
+spark-bench = {
+  spark-submit-config = [{
+    spark-home = /home/jyeo/spark
+    spark-args = {
+        master="yarn"
+        num-executors=2
+        executor-cores=24
+        executor-memory=100g
+    }
+    workload-suites = [
+      {
+        workloads = [
+          {
+          name = "graph-data-generator"
+          vertices = 10000
+          partitions = 400
+          output = "hdfs:///1k-vertex-400-part-graph.txt"
+          }
+        ]
+      }
+    ]
+  }]
+}
